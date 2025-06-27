@@ -4,8 +4,11 @@ import { ArrowLeft } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import BackgroundPattern from '../components/BackgroundPattern';
 import Navigation from '../components/Navigation';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Products = () => {
+  const { theme } = useTheme();
+  
   const products = [
     {
       id: 1,
@@ -70,7 +73,9 @@ const Products = () => {
   ];
 
   return (
-    <div className="min-h-screen relative">
+    <div className={`min-h-screen relative transition-colors duration-300 ${
+      theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'
+    }`}>
       <BackgroundPattern />
       
       <div className="relative z-10 container mx-auto px-4 py-8">
@@ -79,10 +84,12 @@ const Products = () => {
           <Navigation />
           
           {/* Breadcrumb */}
-          <div className="mb-8">
+          <div className="mb-8 animate-fade-in">
             <Link
               to="/"
-              className="inline-flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
+              className={`inline-flex items-center space-x-2 transition-colors ${
+                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
             >
               <ArrowLeft size={16} />
               <span>Back to Home</span>
@@ -90,38 +97,61 @@ const Products = () => {
           </div>
           
           {/* Page Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight mb-4">
+          <div className="text-center mb-12 animate-fade-in">
+            <h1 className={`text-4xl md:text-5xl font-bold leading-tight mb-4 ${
+              theme === 'dark' 
+                ? 'bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent'
+                : 'bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent'
+            }`}>
               Our Products
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <p className={`text-xl max-w-2xl mx-auto ${
+              theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+            }`}>
               Discover our comprehensive range of weighing solutions designed for precision, reliability, and excellence across all industries.
             </p>
           </div>
           
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-            {products.map((product) => (
-              <ProductCard
+            {products.map((product, index) => (
+              <div 
                 key={product.id}
-                title={product.title}
-                description={product.description}
-                image={product.image}
-              />
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <ProductCard
+                  title={product.title}
+                  description={product.description}
+                  image={product.image}
+                />
+              </div>
             ))}
           </div>
           
           {/* Contact CTA */}
-          <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className={`text-center backdrop-blur-sm rounded-xl border p-8 animate-fade-in ${
+            theme === 'dark'
+              ? 'bg-white/10 border-white/20'
+              : 'bg-gray-900/10 border-gray-900/20'
+          }`}>
+            <h3 className={`text-2xl font-bold mb-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
               Need a Custom Solution?
             </h3>
-            <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+            <p className={`mb-6 max-w-2xl mx-auto ${
+              theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+            }`}>
               Can't find what you're looking for? Contact us for custom weighing solutions tailored to your specific requirements.
             </p>
             <Link
               to="/"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-white/20 backdrop-blur-sm text-white hover:bg-gradient-to-r hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 hover:scale-105"
+              className={`inline-flex items-center space-x-2 px-8 py-4 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-white/20 text-white hover:from-blue-500/30 hover:to-purple-500/30'
+                  : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-gray-900/20 text-gray-900 hover:from-blue-500/20 hover:to-purple-500/20'
+              }`}
             >
               <span className="font-semibold">Contact Us</span>
             </Link>
