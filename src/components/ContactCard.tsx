@@ -1,5 +1,5 @@
-
 import { Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -11,20 +11,29 @@ interface ContactCardProps {
 
 const ContactItem = ({ icon, title, content, link, className = "" }: ContactCardProps) => {
   const Element = link ? 'a' : 'div';
+  const { theme } = useTheme();
   
   return (
     <Element
       href={link}
       target={link ? "_blank" : undefined}
       rel={link ? "noopener noreferrer" : undefined}
-      className={`flex items-start space-x-4 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 cursor-pointer ${className}`}
+      className={`flex items-start space-x-4 p-4 backdrop-blur-sm rounded-xl border transition-all duration-300 hover:scale-105 cursor-pointer ${
+        theme === 'dark'
+          ? 'bg-white/10 border-white/20 hover:bg-white/20'
+          : 'bg-gray-900/10 border-gray-900/20 hover:bg-gray-900/20'
+      } ${className}`}
     >
       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="text-sm font-medium text-white/90 mb-1">{title}</h3>
-        <p className="text-white/80 text-sm break-words">{content}</p>
+        <h3 className={`text-sm font-medium mb-1 ${
+          theme === 'dark' ? 'text-white/90' : 'text-gray-900'
+        }`}>{title}</h3>
+        <p className={`text-sm break-words ${
+          theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+        }`}>{content}</p>
       </div>
     </Element>
   );
