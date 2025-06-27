@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import BackgroundPattern from '../components/BackgroundPattern';
 import Navigation from '../components/Navigation';
+import AnimatedSection from '../components/AnimatedSection';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Products = () => {
@@ -81,81 +82,88 @@ const Products = () => {
       <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Navigation */}
-          <Navigation />
+          <AnimatedSection>
+            <Navigation />
+          </AnimatedSection>
           
           {/* Breadcrumb */}
-          <div className="mb-8 animate-fade-in">
-            <Link
-              to="/"
-              className={`inline-flex items-center space-x-2 transition-colors ${
-                theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
-              }`}
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Home</span>
-            </Link>
-          </div>
+          <AnimatedSection delay={100}>
+            <div className="mb-8">
+              <Link
+                to="/"
+                className={`inline-flex items-center space-x-2 transition-colors ${
+                  theme === 'dark' ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                }`}
+              >
+                <ArrowLeft size={16} />
+                <span>Back to Home</span>
+              </Link>
+            </div>
+          </AnimatedSection>
           
           {/* Page Header */}
-          <div className="text-center mb-12 animate-fade-in">
-            <h1 className={`text-4xl md:text-5xl font-bold leading-tight mb-4 ${
-              theme === 'dark' 
-                ? 'bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent'
-                : 'bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent'
-            }`}>
-              Our Products
-            </h1>
-            <p className={`text-xl max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-            }`}>
-              Discover our comprehensive range of weighing solutions designed for precision, reliability, and excellence across all industries.
-            </p>
-          </div>
+          <AnimatedSection delay={200}>
+            <div className="text-center mb-12">
+              <h1 className={`text-4xl md:text-5xl font-bold leading-tight mb-4 ${
+                theme === 'dark' 
+                  ? 'bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent'
+                  : 'bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent'
+              }`}>
+                Our Products
+              </h1>
+              <p className={`text-xl max-w-2xl mx-auto ${
+                theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+              }`}>
+                Discover our comprehensive range of weighing solutions designed for precision, reliability, and excellence across all industries.
+              </p>
+            </div>
+          </AnimatedSection>
           
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
             {products.map((product, index) => (
-              <div 
+              <AnimatedSection 
                 key={product.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                delay={300 + (index * 100)}
               >
                 <ProductCard
                   title={product.title}
                   description={product.description}
                   image={product.image}
                 />
-              </div>
+              </AnimatedSection>
             ))}
           </div>
           
           {/* Contact CTA */}
-          <div className={`text-center backdrop-blur-sm rounded-xl border p-8 animate-fade-in ${
-            theme === 'dark'
-              ? 'bg-white/10 border-white/20'
-              : 'bg-gray-900/10 border-gray-900/20'
-          }`}>
-            <h3 className={`text-2xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+          <AnimatedSection delay={800}>
+            <div className={`text-center backdrop-blur-sm rounded-xl border p-8 ${
+              theme === 'dark'
+                ? 'bg-white/10 border-white/20'
+                : 'bg-gray-900/10 border-gray-900/20'
             }`}>
-              Need a Custom Solution?
-            </h3>
-            <p className={`mb-6 max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-white/80' : 'text-gray-700'
-            }`}>
-              Can't find what you're looking for? Contact us for custom weighing solutions tailored to your specific requirements.
-            </p>
-            <Link
-              to="/"
-              className={`inline-flex items-center space-x-2 px-8 py-4 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
-                theme === 'dark'
-                  ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-white/20 text-white hover:from-blue-500/30 hover:to-purple-500/30'
-                  : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-gray-900/20 text-gray-900 hover:from-blue-500/20 hover:to-purple-500/20'
-              }`}
-            >
-              <span className="font-semibold">Contact Us</span>
-            </Link>
-          </div>
+              <h3 className={`text-2xl font-bold mb-4 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                Need a Custom Solution?
+              </h3>
+              <p className={`mb-6 max-w-2xl mx-auto ${
+                theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+              }`}>
+                Can't find what you're looking for? Contact us for custom weighing solutions tailored to your specific requirements.
+              </p>
+              <Link
+                to="/"
+                className={`inline-flex items-center space-x-2 px-8 py-4 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                  theme === 'dark'
+                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-white/20 text-white hover:from-blue-500/30 hover:to-purple-500/30'
+                    : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-gray-900/20 text-gray-900 hover:from-blue-500/20 hover:to-purple-500/20'
+                }`}
+              >
+                <span className="font-semibold">Contact Us</span>
+              </Link>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </div>
