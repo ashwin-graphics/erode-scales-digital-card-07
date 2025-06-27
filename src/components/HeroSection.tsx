@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Phone, Mail, MapPin, Instagram, Facebook, Globe } from 'lucide-react';
-import { generateVCard } from '../utils/vcard';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,37 +16,41 @@ const HeroSection = () => {
   };
 
   const handleSaveContact = async () => {
-    // Try Web Share API first for direct contact saving
-    if (navigator.share && navigator.canShare) {
-      const vcard = generateVCard();
-      const blob = new Blob([vcard], { type: 'text/vcard' });
-      const file = new File([blob], 'Madhankumar-C-Contact.vcf', { type: 'text/vcard' });
-      
+    const contactData = {
+      name: 'Madhankumar C',
+      tel: '+918122500800',
+      email: 'erodescaales@gmail.com',
+      organization: 'Erode Scales',
+      title: 'Managing Director'
+    };
+
+    // Try Contact Picker API first (Chrome/Edge on Android)
+    if ('contacts' in navigator && 'ContactsManager' in window) {
       try {
-        if (navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            title: 'Madhankumar C - Contact',
-            text: 'Save contact for Madhankumar C, Managing Director',
-            files: [file]
-          });
-          return;
-        }
+        await (navigator as any).contacts.select(['name', 'tel', 'email'], { multiple: false });
+        alert('Contact saved successfully!');
+        return;
       } catch (error) {
-        console.log('Web Share API failed, falling back to download');
+        console.log('Contact Picker API failed');
       }
     }
 
-    // Fallback to vCard download
-    const vcard = generateVCard();
-    const blob = new Blob([vcard], { type: 'text/vcard' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Madhankumar-C-Contact.vcf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Try Web Share API with contact info
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Madhankumar C - Contact',
+          text: `Save contact: ${contactData.name}\nPhone: ${contactData.tel}\nEmail: ${contactData.email}\nCompany: ${contactData.organization}`,
+          url: `tel:${contactData.tel}`
+        });
+        return;
+      } catch (error) {
+        console.log('Web Share API failed');
+      }
+    }
+
+    // Show contact info in alert as fallback
+    alert(`Contact Information:\n\nName: ${contactData.name}\nPhone: ${contactData.tel}\nEmail: ${contactData.email}\nCompany: ${contactData.organization}\nPosition: ${contactData.title}\n\nPlease save this information manually to your contacts.`);
   };
 
   const socialLinks = [
@@ -81,15 +84,13 @@ const HeroSection = () => {
     <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Background Section with Professional Photo */}
       <div className="relative h-80 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/lovable-uploads/16b6abab-dc68-4172-9ffb-b997e2cf7663.png')`
-          }}
-        >
-          {/* Overlay for better text contrast */}
-          <div className="absolute inset-0 bg-black/20"></div>
-        </div>
+        <img 
+          src="/lovable-uploads/16b6abab-dc68-4172-9ffb-b997e2cf7663.png"
+          alt="Madhankumar C Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Overlay for better text contrast */}
+        <div className="absolute inset-0 bg-black/30"></div>
         
         {/* Animated Elements */}
         <div className="absolute inset-0">
