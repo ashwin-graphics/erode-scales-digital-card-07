@@ -10,49 +10,60 @@ const HeroSection = () => {
     setIsVisible(true);
   }, []);
 
-  const colorBlocks = [
-    'bg-red-400', 'bg-blue-400', 'bg-green-400', 'bg-yellow-400',
-    'bg-purple-400', 'bg-pink-400', 'bg-indigo-400', 'bg-orange-400',
-    'bg-teal-400', 'bg-cyan-400', 'bg-lime-400', 'bg-rose-400',
-    'bg-violet-400', 'bg-amber-400', 'bg-emerald-400', 'bg-sky-400'
-  ];
-
   return (
     <div className={`relative overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Decorative Card Background */}
+      {/* Business Card */}
       <div className="relative mb-12">
-        <div className={`mx-auto max-w-sm p-6 rounded-3xl shadow-2xl ${
+        <div className={`mx-auto max-w-lg p-8 rounded-2xl shadow-2xl ${
           theme === 'dark' 
-            ? 'bg-white/10 backdrop-blur-sm border border-white/20' 
-            : 'bg-gray-900/10 backdrop-blur-sm border border-gray-900/20'
+            ? 'bg-gradient-to-r from-slate-800 via-blue-900 to-purple-900 border border-white/20' 
+            : 'bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border border-gray-200'
         }`}>
-          {/* Colorful Grid Pattern */}
-          <div className="grid grid-cols-4 gap-2 mb-6">
-            {colorBlocks.map((color, index) => (
-              <div
-                key={index}
-                className={`aspect-square rounded-lg ${color} opacity-80 transform hover:scale-110 transition-transform duration-200`}
-              />
-            ))}
-          </div>
-          
-          {/* Profile Card Content */}
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg">
-              MC
+          {/* Business Card Content - Horizontal Layout */}
+          <div className="flex items-center space-x-6">
+            {/* Profile Avatar */}
+            <div className="flex-shrink-0">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                MC
+              </div>
             </div>
             
-            <h3 className={`text-lg font-bold mb-2 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              MADHANKUMAR. C
-            </h3>
+            {/* Business Info */}
+            <div className="flex-1">
+              <h3 className={`text-2xl font-bold mb-1 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                MADHANKUMAR. C
+              </h3>
+              
+              <p className={`text-lg font-semibold mb-3 ${
+                theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
+              }`}>
+                MANAGING DIRECTOR
+              </p>
+              
+              <div className={`text-sm space-y-1 ${
+                theme === 'dark' ? 'text-white/80' : 'text-gray-700'
+              }`}>
+                <p>Precision Weighing Solutions</p>
+                <p>Trust • Excellence • Innovation</p>
+              </div>
+            </div>
             
-            <p className={`text-sm ${
-              theme === 'dark' ? 'text-white/70' : 'text-gray-600'
-            }`}>
-              MANAGING DIRECTOR
-            </p>
+            {/* Decorative Element */}
+            <div className="flex-shrink-0">
+              <div className={`w-16 h-16 rounded-lg ${
+                theme === 'dark' 
+                  ? 'bg-gradient-to-br from-blue-500/30 to-purple-500/30' 
+                  : 'bg-gradient-to-br from-blue-400/20 to-purple-400/20'
+              } flex items-center justify-center`}>
+                <div className={`text-2xl font-bold ${
+                  theme === 'dark' ? 'text-white/60' : 'text-gray-600'
+                }`}>
+                  ⚖️
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
