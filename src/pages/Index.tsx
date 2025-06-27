@@ -1,8 +1,8 @@
-
 import ProfileHeader from '../components/ProfileHeader';
 import ContactCard from '../components/ContactCard';
 import BackgroundPattern from '../components/BackgroundPattern';
 import ProductsSection from '../components/ProductsSection';
+import Navigation from '../components/Navigation';
 
 const Index = () => {
   return (
@@ -11,6 +11,9 @@ const Index = () => {
       
       <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          {/* Navigation */}
+          <Navigation />
+          
           {/* Profile Header */}
           <div className="mb-12">
             <ProfileHeader />
