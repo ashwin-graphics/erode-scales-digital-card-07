@@ -2,6 +2,7 @@
 import ProfileHeader from '../components/ProfileHeader';
 import ContactCard from '../components/ContactCard';
 import BackgroundPattern from '../components/BackgroundPattern';
+import ProductsSection from '../components/ProductsSection';
 
 const Index = () => {
   return (
@@ -14,6 +15,9 @@ const Index = () => {
           <div className="mb-12">
             <ProfileHeader />
           </div>
+          
+          {/* Products Section */}
+          <ProductsSection />
           
           {/* Contact Information */}
           <div className="mb-8">

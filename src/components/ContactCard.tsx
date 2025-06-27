@@ -70,13 +70,13 @@ const ContactCard = () => {
         />
       </div>
       
-      <div className="flex space-x-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <ContactItem
           icon={<Instagram size={20} />}
           title="Instagram"
           content="@erode_scales"
           link="https://www.instagram.com/erode_scales?igsh=ZGgxNTV5dmxzeDBm"
-          className="flex-1"
+          className="flex-1 min-w-0"
         />
         
         <ContactItem
@@ -84,7 +84,7 @@ const ContactCard = () => {
           title="Facebook"
           content="Erode Scales"
           link="https://www.facebook.com/erode.scaales"
-          className="flex-1"
+          className="flex-1 min-w-0"
         />
       </div>
     </div>
