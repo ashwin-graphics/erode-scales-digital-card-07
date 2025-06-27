@@ -1,5 +1,7 @@
 
+import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { Skeleton } from './ui/skeleton';
 
 interface ProductCardProps {
   title: string;
@@ -9,6 +11,8 @@ interface ProductCardProps {
 
 const ProductCard = ({ title, description, image }: ProductCardProps) => {
   const { theme } = useTheme();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   return (
     <div className={`backdrop-blur-sm rounded-xl border overflow-hidden transition-all duration-300 hover:scale-105 ${
@@ -16,12 +20,28 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
         ? 'bg-white/10 border-white/20 hover:bg-white/20'
         : 'bg-gray-900/10 border-gray-900/20 hover:bg-gray-900/20'
     }`}>
-      <div className="aspect-video overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+      <div className="aspect-video overflow-hidden relative">
+        {!imageLoaded && !imageError && (
+          <Skeleton className="w-full h-full absolute inset-0" />
+        )}
+        {!imageError ? (
+          <img
+            src={image}
+            alt={title}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className={`w-full h-full flex items-center justify-center ${
+            theme === 'dark' ? 'bg-gray-800 text-white/60' : 'bg-gray-200 text-gray-600'
+          }`}>
+            <span className="text-sm">Image unavailable</span>
+          </div>
+        )}
       </div>
       <div className="p-4">
         <h3 className={`text-lg font-semibold mb-2 ${

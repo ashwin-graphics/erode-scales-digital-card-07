@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { ArrowRight } from 'lucide-react';
@@ -11,14 +10,14 @@ const ProductsSection = () => {
     {
       id: 1,
       title: "Digital Weighing Scales",
-      description: "High-precision digital scales for industrial and commercial use",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
+      description: "High-precision digital POS scales for retail and commercial use with clear display",
+      image: "/lovable-uploads/0b1bb6e9-8b22-4e8d-9fac-8a2b7a7d9c3e.png"
     },
     {
       id: 2,
       title: "Electronic Balance Systems",
-      description: "Advanced electronic balance solutions for accurate measurements",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop"
+      description: "Advanced electronic balance solutions for accurate measurements in laboratory settings",
+      image: "/lovable-uploads/93c95979-9c4b-4b5e-a7a7-8b3d2c1e4f5a.png"
     }
   ];
 

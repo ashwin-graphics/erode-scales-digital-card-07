@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
@@ -14,62 +13,62 @@ const Products = () => {
     {
       id: 1,
       title: "Digital Weighing Scales",
-      description: "High-precision digital scales for industrial and commercial use",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
+      description: "High-precision digital POS scales for retail and commercial use with clear display",
+      image: "/lovable-uploads/0b1bb6e9-8b22-4e8d-9fac-8a2b7a7d9c3e.png"
     },
     {
       id: 2,
       title: "Electronic Balance Systems",
-      description: "Advanced electronic balance solutions for accurate measurements",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop"
+      description: "Advanced electronic balance solutions for accurate measurements in laboratory settings",
+      image: "/lovable-uploads/93c95979-9c4b-4b5e-a7a7-8b3d2c1e4f5a.png"
     },
     {
       id: 3,
       title: "Industrial Platform Scales",
-      description: "Heavy-duty platform scales for warehouse and industrial applications",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
+      description: "Heavy-duty platform scales for warehouse and industrial weighing applications",
+      image: "/lovable-uploads/d4e5f6a7-b8c9-4d3e-9f1a-2b3c4d5e6f7a.png"
     },
     {
       id: 4,
       title: "Precision Analytical Balances",
-      description: "Laboratory-grade analytical balances for precise measurements",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+      description: "Laboratory-grade analytical balances for precise scientific measurements",
+      image: "/lovable-uploads/e8f9a0b1-c2d3-4e5f-8a1b-3c4d5e6f7a8b.png"
     },
     {
       id: 5,
-      title: "Heavy Duty Floor Scales",
-      description: "Robust floor scales designed for heavy-duty industrial weighing",
-      image: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=300&fit=crop"
+      title: "Heavy Duty Crane Scales",
+      description: "Robust crane scales designed for heavy-duty industrial lifting and weighing",
+      image: "/lovable-uploads/f2a3b4c5-d6e7-4f8a-9b1c-4d5e6f7a8b9c.png"
     },
     {
       id: 6,
-      title: "Portable Weighing Systems",
-      description: "Compact and portable weighing solutions for field operations",
-      image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&h=300&fit=crop"
+      title: "Commercial Shop Scales",
+      description: "Retail-friendly scales perfect for shops, markets and commercial establishments",
+      image: "/lovable-uploads/a6b7c8d9-e0f1-4a2b-8c3d-5e6f7a8b9c0d.png"
     },
     {
       id: 7,
-      title: "Laboratory Balances",
-      description: "Professional laboratory balances for research and quality control",
-      image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop"
+      title: "Counting Scales",
+      description: "Specialized counting scales for inventory management and parts counting applications",
+      image: "/lovable-uploads/b0c1d2e3-f4a5-4b6c-9d7e-6f8a9b0c1d2e.png"
     },
     {
       id: 8,
-      title: "Commercial Shop Scales",
-      description: "Retail-friendly scales perfect for shops and markets",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop"
+      title: "Portable Table Scales",
+      description: "Compact and portable weighing solutions for versatile applications",
+      image: "/lovable-uploads/c4d5e6f7-a8b9-4c0d-8e1f-7a9b0c1d2e3f.png"
     },
     {
       id: 9,
-      title: "Truck Weighbridge Systems",
-      description: "Large-scale weighbridge systems for vehicle and cargo weighing",
-      image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=400&h=300&fit=crop"
+      title: "Professional Weighing Systems",
+      description: "Advanced professional weighing systems for specialized industrial requirements",
+      image: "/lovable-uploads/d8e9f0a1-b2c3-4d4e-9f5a-8b0c1d2e3f4a.png"
     },
     {
       id: 10,
-      title: "Counting Scales",
-      description: "Specialized counting scales for inventory and parts management",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+      title: "Multi-Purpose Scales",
+      description: "Versatile multi-purpose scales suitable for various weighing applications",
+      image: "/lovable-uploads/e2f3a4b5-c6d7-4e8f-8a9b-9c0d1e2f3a4b.png"
     }
   ];
 
