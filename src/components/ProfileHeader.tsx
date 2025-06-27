@@ -3,10 +3,46 @@ import { useState, useEffect } from 'react';
 
 const ProfileHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [textIndex, setTextIndex] = useState(0);
+
+  const texts = ['Madhankumar C', 'Managing Director'];
+  const typingSpeed = 100;
+  const erasingSpeed = 50;
+  const delayBetweenTexts = 2000;
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  useEffect(() => {
+    const currentText = texts[textIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isTyping) {
+      if (displayText.length < currentText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        }, typingSpeed);
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, delayBetweenTexts);
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, erasingSpeed);
+      } else {
+        setTextIndex((prev) => (prev + 1) % texts.length);
+        setIsTyping(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isTyping, textIndex, texts]);
 
   return (
     <div className={`text-center space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -20,15 +56,10 @@ const ProfileHeader = () => {
       </div>
       
       <div className="space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
-          Madhankumar. C
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight min-h-[3.5rem] flex items-center justify-center">
+          {displayText}
+          <span className="animate-pulse ml-1 text-white/70">|</span>
         </h1>
-        
-        <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-white/20 backdrop-blur-sm">
-          <p className="text-xl md:text-2xl font-semibold text-white/90">
-            Managing Director
-          </p>
-        </div>
         
         <div className="max-w-2xl mx-auto space-y-3 px-4">
           <p className="text-lg md:text-xl text-white/80 font-medium italic">
