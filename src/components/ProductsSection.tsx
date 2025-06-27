@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { ArrowRight } from 'lucide-react';
@@ -45,8 +46,8 @@ const ProductsSection = () => {
           to="/products"
           className={`inline-flex items-center space-x-2 px-8 py-4 rounded-full border backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
             theme === 'dark'
-              ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-white/20 text-white hover:from-blue-500/30 hover:to-purple-500/30'
-              : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-gray-900/20 text-gray-900 hover:from-blue-500/20 hover:to-purple-500/20'
+              ? 'bg-gradient-to-r from-[#f05423]/20 to-orange-500/20 border-white/20 text-white hover:from-[#f05423]/30 hover:to-orange-500/30'
+              : 'bg-gradient-to-r from-[#f05423]/10 to-orange-500/10 border-gray-900/20 text-gray-900 hover:from-[#f05423]/20 hover:to-orange-500/20'
           }`}
         >
           <span className="font-semibold">View All Products</span>

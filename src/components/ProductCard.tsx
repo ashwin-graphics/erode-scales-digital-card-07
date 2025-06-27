@@ -22,7 +22,7 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
   };
 
   return (
-    <div className={`backdrop-blur-sm rounded-xl border overflow-hidden transition-all duration-300 hover:scale-105 ${
+    <div className={`backdrop-blur-sm rounded-xl border overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#f05423]/20 ${
       theme === 'dark'
         ? 'bg-white/10 border-white/20 hover:bg-white/20'
         : 'bg-gray-900/10 border-gray-900/20 hover:bg-gray-900/20'

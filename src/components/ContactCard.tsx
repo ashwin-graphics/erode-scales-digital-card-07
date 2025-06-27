@@ -1,3 +1,4 @@
+
 import { Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -24,7 +25,7 @@ const ContactItem = ({ icon, title, content, link, className = "" }: ContactCard
           : 'bg-gray-900/10 border-gray-900/20 hover:bg-gray-900/20'
       } ${className}`}
     >
-      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white">
+      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#f05423] to-orange-600 rounded-full flex items-center justify-center text-white">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
