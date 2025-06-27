@@ -58,18 +58,16 @@ const HeroSection = () => {
 
   return (
     <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Background Section with Image */}
-      <div className="relative h-80 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 overflow-hidden">
-        {/* Background Pattern/Image Effect */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+      {/* Background Section with Gradient */}
+      <div className="relative h-80 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
-        {/* Flowing Wave Effect */}
+        {/* Animated Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute top-20 right-20 w-24 h-24 bg-blue-300/20 rounded-full blur-lg animate-pulse delay-1000"></div>
-            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-purple-300/10 rounded-full blur-2xl animate-pulse delay-500"></div>
-          </div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-24 h-24 bg-orange-300/20 rounded-full blur-lg animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-red-300/10 rounded-full blur-2xl animate-pulse delay-500"></div>
         </div>
       </div>
 
