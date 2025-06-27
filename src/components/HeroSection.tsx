@@ -16,7 +16,28 @@ const HeroSection = () => {
     window.open('tel:+918122500800', '_blank');
   };
 
-  const handleSaveContact = () => {
+  const handleSaveContact = async () => {
+    // Try Web Share API first for direct contact saving
+    if (navigator.share && navigator.canShare) {
+      const vcard = generateVCard();
+      const blob = new Blob([vcard], { type: 'text/vcard' });
+      const file = new File([blob], 'Madhankumar-C-Contact.vcf', { type: 'text/vcard' });
+      
+      try {
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: 'Madhankumar C - Contact',
+            text: 'Save contact for Madhankumar C, Managing Director',
+            files: [file]
+          });
+          return;
+        }
+      } catch (error) {
+        console.log('Web Share API failed, falling back to download');
+      }
+    }
+
+    // Fallback to vCard download
     const vcard = generateVCard();
     const blob = new Blob([vcard], { type: 'text/vcard' });
     const url = URL.createObjectURL(blob);
@@ -58,15 +79,17 @@ const HeroSection = () => {
 
   return (
     <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Background Section with Gradient */}
-      <div className="relative h-80 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 overflow-hidden">
-        {/* Background Pattern using CSS-in-JS to avoid escaping issues */}
+      {/* Background Section with Professional Photo */}
+      <div className="relative h-80 overflow-hidden">
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `url('/lovable-uploads/16b6abab-dc68-4172-9ffb-b997e2cf7663.png')`
           }}
-        ></div>
+        >
+          {/* Overlay for better text contrast */}
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
         
         {/* Animated Elements */}
         <div className="absolute inset-0">
@@ -79,12 +102,14 @@ const HeroSection = () => {
       {/* White Content Section */}
       <div className={`relative ${theme === 'dark' ? 'bg-slate-900' : 'bg-white'} pt-20 pb-8 px-4`}>
         
-        {/* Profile Photo - Positioned at intersection */}
+        {/* Profile Photo - Positioned at intersection using the same uploaded image */}
         <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white">
-            <div className="w-full h-full bg-gradient-to-br from-[#f05423] via-orange-500 to-red-500 flex items-center justify-center text-4xl font-bold text-white">
-              MC
-            </div>
+            <img 
+              src="/lovable-uploads/16b6abab-dc68-4172-9ffb-b997e2cf7663.png" 
+              alt="Madhankumar C"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
@@ -123,14 +148,14 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Add to Contact Button */}
+          {/* Save Contact Button */}
           <div className="mb-12">
             <button
               onClick={handleSaveContact}
               className="bg-[#f05423] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#d44419] transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
             >
               <span className="text-2xl">+</span>
-              Add to Contact
+              Save Contact
             </button>
           </div>
 
