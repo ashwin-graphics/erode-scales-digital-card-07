@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Skeleton } from './ui/skeleton';
+import { MessageCircle } from 'lucide-react';
 
 interface ProductCardProps {
   title: string;
@@ -13,6 +14,12 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
   const { theme } = useTheme();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  const handleWhatsAppEnquiry = () => {
+    const message = `Hello! I have come to enquire about ${title}. Could you please provide more information about pricing, specifications, and availability?`;
+    const whatsappUrl = `https://wa.me/918122500800?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className={`backdrop-blur-sm rounded-xl border overflow-hidden transition-all duration-300 hover:scale-105 ${
@@ -49,11 +56,24 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => {
         }`}>
           {title}
         </h3>
-        <p className={`text-sm ${
+        <p className={`text-sm mb-4 ${
           theme === 'dark' ? 'text-white/80' : 'text-gray-700'
         }`}>
           {description}
         </p>
+        
+        {/* Contact & Enquire Button */}
+        <button
+          onClick={handleWhatsAppEnquiry}
+          className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 ${
+            theme === 'dark'
+              ? 'bg-green-500 hover:bg-green-600 text-white'
+              : 'bg-green-600 hover:bg-green-700 text-white'
+          }`}
+        >
+          <MessageCircle size={16} />
+          <span className="text-sm font-medium">Contact & Enquire</span>
+        </button>
       </div>
     </div>
   );
