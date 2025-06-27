@@ -51,10 +51,10 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className={`relative overflow-hidden min-h-screen flex flex-col items-center justify-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <div className={`flex flex-col items-center justify-center px-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       
-      {/* Main Business Card */}
-      <div className="relative mb-8 max-w-sm w-full mx-4">
+      {/* Main Business Card - Centered */}
+      <div className="mb-8 w-full max-w-sm">
         <div className={`p-8 rounded-3xl shadow-2xl backdrop-blur-sm border-2 ${
           theme === 'dark' 
             ? 'bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 border-yellow-400/30' 
@@ -122,15 +122,15 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Social Media Icons Grid */}
-      <div className="grid grid-cols-3 gap-4 max-w-xs w-full mx-4">
+      {/* Social Media Icons Grid - Centered */}
+      <div className="grid grid-cols-3 gap-4 w-full max-w-xs">
         {socialLinks.map((social, index) => (
           <a
             key={index}
             href={social.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`w-16 h-16 rounded-2xl ${social.color} flex items-center justify-center text-white shadow-lg hover:scale-110 transition-all duration-300 hover:shadow-xl`}
+            className={`w-16 h-16 rounded-2xl ${social.color} flex items-center justify-center text-white shadow-lg hover:scale-110 transition-all duration-300 hover:shadow-xl mx-auto`}
             aria-label={social.label}
           >
             {social.icon}
@@ -139,7 +139,7 @@ const HeroSection = () => {
       </div>
 
       {/* Bottom tagline */}
-      <div className="mt-8 text-center px-4">
+      <div className="mt-8 text-center">
         <p className={`text-sm italic ${
           theme === 'dark' ? 'text-white/60' : 'text-gray-600'
         }`}>

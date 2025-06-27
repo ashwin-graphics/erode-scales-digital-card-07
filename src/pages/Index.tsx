@@ -11,17 +11,17 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen relative transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
+      theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'
     }`}>
       <BackgroundPattern />
       
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 py-6">
         <div className="max-w-4xl mx-auto">
           {/* Navigation */}
           <Navigation />
           
-          {/* Hero Section */}
-          <div className="mb-12">
+          {/* Hero Section - Reduced top margin */}
+          <div className="mt-4 mb-12">
             <HeroSection />
           </div>
           
